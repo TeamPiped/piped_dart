@@ -79,6 +79,7 @@ Class | Method | HTTP request | Description
  - [Regions](doc/Regions.md)
  - [Stream](doc/Stream.md)
  - [StreamItem](doc/StreamItem.md)
+ - [Subtitle](doc/Subtitle.md)
  - [VideoInfo](doc/VideoInfo.md)
 
 
