@@ -13,10 +13,17 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Stream.serializer)
       ..add(StreamFormatEnum.serializer)
       ..add(StreamItem.serializer)
+      ..add(Subtitle.serializer)
       ..add(VideoInfo.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Stream)]),
           () => new ListBuilder<Stream>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Stream)]),
+          () => new ListBuilder<Stream>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Subtitle)]),
+          () => new ListBuilder<Subtitle>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(StreamItem)]),
           () => new ListBuilder<StreamItem>())
