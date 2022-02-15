@@ -13,6 +13,7 @@ part 'stream_item.g.dart';
 /// * [duration] - The duration of the video in seconds.
 /// * [thumbnail] - The thumbnail of the video.
 /// * [title] - The title of the video.
+/// * [uploaded] - The date in unix epoch the video was uploaded.
 /// * [uploadedDate] - The relative date the video was uploaded on.
 /// * [uploaderAvatar] - The avatar of the channel of the video.
 /// * [uploaderName] - The name of the channel of the video.
@@ -32,6 +33,10 @@ abstract class StreamItem implements Built<StreamItem, StreamItemBuilder> {
     /// The title of the video.
     @BuiltValueField(wireName: r'title')
     String get title;
+
+    /// The date in unix epoch the video was uploaded.
+    @BuiltValueField(wireName: r'uploaded')
+    int? get uploaded;
 
     /// The relative date the video was uploaded on.
     @BuiltValueField(wireName: r'uploadedDate')
@@ -95,6 +100,12 @@ class _$StreamItemSerializer implements StructuredSerializer<StreamItem> {
             ..add(r'title')
             ..add(serializers.serialize(object.title,
                 specifiedType: const FullType(String)));
+        if (object.uploaded != null) {
+            result
+                ..add(r'uploaded')
+                ..add(serializers.serialize(object.uploaded,
+                    specifiedType: const FullType(int)));
+        }
         if (object.uploadedDate != null) {
             result
                 ..add(r'uploadedDate')
@@ -164,6 +175,11 @@ class _$StreamItemSerializer implements StructuredSerializer<StreamItem> {
                     final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
                     result.title = valueDes;
+                    break;
+                case r'uploaded':
+                    final valueDes = serializers.deserialize(value,
+                        specifiedType: const FullType(int)) as int;
+                    result.uploaded = valueDes;
                     break;
                 case r'uploadedDate':
                     final valueDes = serializers.deserialize(value,

@@ -14,6 +14,8 @@ class _$StreamItem extends StreamItem {
   @override
   final String title;
   @override
+  final int? uploaded;
+  @override
   final String? uploadedDate;
   @override
   final String? uploaderAvatar;
@@ -35,6 +37,7 @@ class _$StreamItem extends StreamItem {
       {required this.duration,
       required this.thumbnail,
       required this.title,
+      this.uploaded,
       this.uploadedDate,
       this.uploaderAvatar,
       this.uploaderName,
@@ -63,6 +66,7 @@ class _$StreamItem extends StreamItem {
         duration == other.duration &&
         thumbnail == other.thumbnail &&
         title == other.title &&
+        uploaded == other.uploaded &&
         uploadedDate == other.uploadedDate &&
         uploaderAvatar == other.uploaderAvatar &&
         uploaderName == other.uploaderName &&
@@ -82,9 +86,11 @@ class _$StreamItem extends StreamItem {
                         $jc(
                             $jc(
                                 $jc(
-                                    $jc($jc(0, duration.hashCode),
-                                        thumbnail.hashCode),
-                                    title.hashCode),
+                                    $jc(
+                                        $jc($jc(0, duration.hashCode),
+                                            thumbnail.hashCode),
+                                        title.hashCode),
+                                    uploaded.hashCode),
                                 uploadedDate.hashCode),
                             uploaderAvatar.hashCode),
                         uploaderName.hashCode),
@@ -100,6 +106,7 @@ class _$StreamItem extends StreamItem {
           ..add('duration', duration)
           ..add('thumbnail', thumbnail)
           ..add('title', title)
+          ..add('uploaded', uploaded)
           ..add('uploadedDate', uploadedDate)
           ..add('uploaderAvatar', uploaderAvatar)
           ..add('uploaderName', uploaderName)
@@ -125,6 +132,10 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
   String? _title;
   String? get title => _$this._title;
   set title(String? title) => _$this._title = title;
+
+  int? _uploaded;
+  int? get uploaded => _$this._uploaded;
+  set uploaded(int? uploaded) => _$this._uploaded = uploaded;
 
   String? _uploadedDate;
   String? get uploadedDate => _$this._uploadedDate;
@@ -166,6 +177,7 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
       _duration = $v.duration;
       _thumbnail = $v.thumbnail;
       _title = $v.title;
+      _uploaded = $v.uploaded;
       _uploadedDate = $v.uploadedDate;
       _uploaderAvatar = $v.uploaderAvatar;
       _uploaderName = $v.uploaderName;
@@ -199,6 +211,7 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
                 thumbnail, 'StreamItem', 'thumbnail'),
             title: BuiltValueNullFieldError.checkNotNull(
                 title, 'StreamItem', 'title'),
+            uploaded: uploaded,
             uploadedDate: uploadedDate,
             uploaderAvatar: uploaderAvatar,
             uploaderName: uploaderName,
