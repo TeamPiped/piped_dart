@@ -27,13 +27,13 @@ Gets all available Channel information about a channel.
 ```dart
 import 'package:piped_api/api.dart';
 
-final api = PipedApi().getUnauthenticatedApi();
-final String channelId = UCs6KfncB4OV6Vug4o_bzijg; // String | The channel ID of the YouTube channel you want to get information about.
+var api_instance = new UnauthenticatedApi();
+var channelId = UCs6KfncB4OV6Vug4o_bzijg; // String | The channel ID of the YouTube channel you want to get information about.
 
 try {
-    final response = api.channelInfoId(channelId);
-    print(response);
-} catch on DioError (e) {
+    var result = api_instance.channelInfoId(channelId);
+    print(result);
+} catch (e) {
     print('Exception when calling UnauthenticatedApi->channelInfoId: $e\n');
 }
 ```
@@ -70,13 +70,13 @@ Gets all available Channel information about a channel.
 ```dart
 import 'package:piped_api/api.dart';
 
-final api = PipedApi().getUnauthenticatedApi();
-final String name = Dream; // String | The name of the YouTube channel you want to get information about.
+var api_instance = new UnauthenticatedApi();
+var name = Dream; // String | The name of the YouTube channel you want to get information about.
 
 try {
-    final response = api.channelInfoName(name);
-    print(response);
-} catch on DioError (e) {
+    var result = api_instance.channelInfoName(name);
+    print(result);
+} catch (e) {
     print('Exception when calling UnauthenticatedApi->channelInfoName: $e\n');
 }
 ```
@@ -113,13 +113,13 @@ Gets all available Channel information about a channel.
 ```dart
 import 'package:piped_api/api.dart';
 
-final api = PipedApi().getUnauthenticatedApi();
-final String username = DreamTraps; // String | The username of the YouTube channel you want to get information about.
+var api_instance = new UnauthenticatedApi();
+var username = DreamTraps; // String | The username of the YouTube channel you want to get information about.
 
 try {
-    final response = api.channelInfoUsername(username);
-    print(response);
-} catch on DioError (e) {
+    var result = api_instance.channelInfoUsername(username);
+    print(result);
+} catch (e) {
     print('Exception when calling UnauthenticatedApi->channelInfoUsername: $e\n');
 }
 ```
@@ -156,13 +156,13 @@ Gets all available Stream information about a video.
 ```dart
 import 'package:piped_api/api.dart';
 
-final api = PipedApi().getUnauthenticatedApi();
-final String videoId = dQw4w9WgXcQ; // String | The video ID of the YouTube video you want to get information about.
+var api_instance = new UnauthenticatedApi();
+var videoId = dQw4w9WgXcQ; // String | The video ID of the YouTube video you want to get information about.
 
 try {
-    final response = api.streamInfo(videoId);
-    print(response);
-} catch on DioError (e) {
+    var result = api_instance.streamInfo(videoId);
+    print(result);
+} catch (e) {
     print('Exception when calling UnauthenticatedApi->streamInfo: $e\n');
 }
 ```
@@ -199,13 +199,13 @@ Gets all Trending Videos in the requested country.
 ```dart
 import 'package:piped_api/api.dart';
 
-final api = PipedApi().getUnauthenticatedApi();
-final Regions region = US; // Regions | The Region to get trending videos from.
+var api_instance = new UnauthenticatedApi();
+var region = US; // Regions | The Region to get trending videos from.
 
 try {
-    final response = api.trending(region);
-    print(response);
-} catch on DioError (e) {
+    var result = api_instance.trending(region);
+    print(result);
+} catch (e) {
     print('Exception when calling UnauthenticatedApi->trending: $e\n');
 }
 ```
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**BuiltList&lt;StreamItem&gt;**](StreamItem.md)
+[**BuiltList<StreamItem>**](StreamItem.md)
 
 ### Authorization
 

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **id** | **String** | The ID of the channel. | [optional] 
 **name** | **String** | The name of the channel. | [optional] 
 **nextpage** | **String** | The parameter used to get the next page of related videos. | [optional] 
-**relatedStreams** | [**BuiltList&lt;StreamItem&gt;**](StreamItem.md) |  | [optional] 
+**relatedStreams** | [**BuiltList<StreamItem>**](StreamItem.md) |  | [optional] 
 **subscriberCount** | **int** | The number of subscribers the channel has. | [optional] 
 **verified** | **bool** | Whether the channel is verified. | [optional] 
 
