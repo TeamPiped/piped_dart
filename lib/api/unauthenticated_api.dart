@@ -14,6 +14,7 @@ import 'package:piped_api/model/channel_info.dart';
 import 'package:piped_api/model/exception_error.dart';
 import 'package:piped_api/model/regions.dart';
 import 'package:piped_api/model/stream_item.dart';
+import 'package:piped_api/model/streams_page.dart';
 import 'package:piped_api/model/video_info.dart';
 
 class UnauthenticatedApi {
@@ -178,6 +179,65 @@ class UnauthenticatedApi {
     ) as ChannelInfo;
 
     return Response<ChannelInfo>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      request: _response.request,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Gets more channel videos
+  ///
+  /// Gets more channel videos. 
+  Future<Response<StreamsPage>> channelNextPage(
+    String channelId,
+    String nextpage, { 
+    CancelToken cancelToken,
+    Map<String, dynamic> headers,
+    Map<String, dynamic> extra,
+    ValidateStatus validateStatus,
+    ProgressCallback onSendProgress,
+    ProgressCallback onReceiveProgress,
+  }) async {
+    final _request = RequestOptions(
+      path: r'/nextpage/channel/{channelId}'.replaceAll('{' r'channelId' '}', channelId.toString()),
+      method: 'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      queryParameters: <String, dynamic>{
+        r'nextpage': nextpage,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+      contentType: 'application/json',
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    dynamic _bodyData;
+
+    final _response = await _dio.request<dynamic>(
+      _request.path,
+      data: _bodyData,
+      options: _request,
+    );
+
+    const _responseType = FullType(StreamsPage);
+    final _responseData = _serializers.deserialize(
+      _response.data,
+      specifiedType: _responseType,
+    ) as StreamsPage;
+
+    return Response<StreamsPage>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

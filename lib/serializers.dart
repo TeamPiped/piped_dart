@@ -18,6 +18,7 @@ import 'package:piped_api/model/exception_error.dart';
 import 'package:piped_api/model/regions.dart';
 import 'package:piped_api/model/stream.dart';
 import 'package:piped_api/model/stream_item.dart';
+import 'package:piped_api/model/streams_page.dart';
 import 'package:piped_api/model/subtitle.dart';
 import 'package:piped_api/model/video_info.dart';
 
@@ -29,6 +30,7 @@ part 'serializers.g.dart';
   Regions,
   Stream,
   StreamItem,
+  StreamsPage,
   Subtitle,
   VideoInfo,
 ])

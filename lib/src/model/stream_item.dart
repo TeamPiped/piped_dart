@@ -110,13 +110,13 @@ class _$StreamItemSerializer implements StructuredSerializer<StreamItem> {
             result
                 ..add(r'uploadedDate')
                 ..add(serializers.serialize(object.uploadedDate,
-                    specifiedType: const FullType(String)));
+                    specifiedType: const FullType.nullable(String)));
         }
         if (object.uploaderAvatar != null) {
             result
                 ..add(r'uploaderAvatar')
                 ..add(serializers.serialize(object.uploaderAvatar,
-                    specifiedType: const FullType(String)));
+                    specifiedType: const FullType.nullable(String)));
         }
         if (object.uploaderName != null) {
             result
@@ -183,12 +183,14 @@ class _$StreamItemSerializer implements StructuredSerializer<StreamItem> {
                     break;
                 case r'uploadedDate':
                     final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
+                        specifiedType: const FullType.nullable(String)) as String?;
+                    if (valueDes == null) continue;
                     result.uploadedDate = valueDes;
                     break;
                 case r'uploaderAvatar':
                     final valueDes = serializers.deserialize(value,
-                        specifiedType: const FullType(String)) as String;
+                        specifiedType: const FullType.nullable(String)) as String?;
+                    if (valueDes == null) continue;
                     result.uploaderAvatar = valueDes;
                     break;
                 case r'uploaderName':

@@ -16,5 +16,6 @@ export 'package:piped_api/src/model/exception_error.dart';
 export 'package:piped_api/src/model/regions.dart';
 export 'package:piped_api/src/model/stream.dart';
 export 'package:piped_api/src/model/stream_item.dart';
+export 'package:piped_api/src/model/streams_page.dart';
 export 'package:piped_api/src/model/subtitle.dart';
 export 'package:piped_api/src/model/video_info.dart';
