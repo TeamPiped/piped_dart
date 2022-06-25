@@ -13,6 +13,8 @@ Method | HTTP request | Description
 [**channelInfoName**](UnauthenticatedApi.md#channelinfoname) | **GET** /c/{name} | Gets Channel Information
 [**channelInfoUsername**](UnauthenticatedApi.md#channelinfousername) | **GET** /user/{username} | Gets Channel Information
 [**channelNextPage**](UnauthenticatedApi.md#channelnextpage) | **GET** /nextpage/channel/{channelId} | Gets more channel videos
+[**comments**](UnauthenticatedApi.md#comments) | **GET** /comments/{videoId} | Gets Comments
+[**commentsNextPage**](UnauthenticatedApi.md#commentsnextpage) | **GET** /nextpage/comments/{videoId} | Gets more comments
 [**streamInfo**](UnauthenticatedApi.md#streaminfo) | **GET** /streams/{videoId} | Gets Video Information
 [**trending**](UnauthenticatedApi.md#trending) | **GET** /trending | Gets all Trending Videos
 
@@ -179,6 +181,94 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**StreamsPage**](StreamsPage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **comments**
+> CommentsPage comments(videoId)
+
+Gets Comments
+
+Gets the comments for a video. 
+
+### Example
+```dart
+import 'package:piped_api/api.dart';
+
+final api = PipedApi().getUnauthenticatedApi();
+final String videoId = dQw4w9WgXcQ; // String | The video ID of the YouTube video you want to get comments from.
+
+try {
+    final response = api.comments(videoId);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling UnauthenticatedApi->comments: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **String**| The video ID of the YouTube video you want to get comments from. | 
+
+### Return type
+
+[**CommentsPage**](CommentsPage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **commentsNextPage**
+> CommentsPage commentsNextPage(videoId, nextpage)
+
+Gets more comments
+
+Gets more comments. 
+
+### Example
+```dart
+import 'package:piped_api/api.dart';
+
+final api = PipedApi().getUnauthenticatedApi();
+final String videoId = dQw4w9WgXcQ; // String | The video ID of the YouTube video you want to get more comments from.
+final String nextpage = nextpage_example; // String | The next page token to get more comments from.
+
+try {
+    final response = api.commentsNextPage(videoId, nextpage);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling UnauthenticatedApi->commentsNextPage: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **videoId** | **String**| The video ID of the YouTube video you want to get more comments from. | 
+ **nextpage** | **String**| The next page token to get more comments from. | 
+
+### Return type
+
+[**CommentsPage**](CommentsPage.md)
 
 ### Authorization
 

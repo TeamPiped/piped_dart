@@ -69,6 +69,8 @@ Class | Method | HTTP request | Description
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelInfoName**](doc/UnauthenticatedApi.md#channelinfoname) | **GET** /c/{name} | Gets Channel Information
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelInfoUsername**](doc/UnauthenticatedApi.md#channelinfousername) | **GET** /user/{username} | Gets Channel Information
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelNextPage**](doc/UnauthenticatedApi.md#channelnextpage) | **GET** /nextpage/channel/{channelId} | Gets more channel videos
+[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**comments**](doc/UnauthenticatedApi.md#comments) | **GET** /comments/{videoId} | Gets Comments
+[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**commentsNextPage**](doc/UnauthenticatedApi.md#commentsnextpage) | **GET** /nextpage/comments/{videoId} | Gets more comments
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**streamInfo**](doc/UnauthenticatedApi.md#streaminfo) | **GET** /streams/{videoId} | Gets Video Information
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**trending**](doc/UnauthenticatedApi.md#trending) | **GET** /trending | Gets all Trending Videos
 
@@ -76,6 +78,8 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ChannelInfo](doc/ChannelInfo.md)
+ - [Comment](doc/Comment.md)
+ - [CommentsPage](doc/CommentsPage.md)
  - [ExceptionError](doc/ExceptionError.md)
  - [Regions](doc/Regions.md)
  - [Stream](doc/Stream.md)

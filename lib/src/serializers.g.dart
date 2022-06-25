@@ -8,6 +8,8 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(ChannelInfo.serializer)
+      ..add(Comment.serializer)
+      ..add(CommentsPage.serializer)
       ..add(ExceptionError.serializer)
       ..add(Regions.serializer)
       ..add(Stream.serializer)
@@ -16,6 +18,9 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(StreamsPage.serializer)
       ..add(Subtitle.serializer)
       ..add(VideoInfo.serializer)
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Comment)]),
+          () => new ListBuilder<Comment>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Stream)]),
           () => new ListBuilder<Stream>())

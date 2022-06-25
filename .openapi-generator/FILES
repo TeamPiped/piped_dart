@@ -2,6 +2,8 @@
 README.md
 analysis_options.yaml
 doc/ChannelInfo.md
+doc/Comment.md
+doc/CommentsPage.md
 doc/ExceptionError.md
 doc/Regions.md
 doc/Stream.md
@@ -21,6 +23,8 @@ lib/src/auth/bearer_auth.dart
 lib/src/auth/oauth.dart
 lib/src/date_serializer.dart
 lib/src/model/channel_info.dart
+lib/src/model/comment.dart
+lib/src/model/comments_page.dart
 lib/src/model/date.dart
 lib/src/model/exception_error.dart
 lib/src/model/regions.dart
@@ -31,3 +35,5 @@ lib/src/model/subtitle.dart
 lib/src/model/video_info.dart
 lib/src/serializers.dart
 pubspec.yaml
+test/comment_test.dart
+test/comments_page_test.dart

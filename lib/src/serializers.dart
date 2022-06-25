@@ -13,6 +13,8 @@ import 'package:piped_api/src/date_serializer.dart';
 import 'package:piped_api/src/model/date.dart';
 
 import 'package:piped_api/src/model/channel_info.dart';
+import 'package:piped_api/src/model/comment.dart';
+import 'package:piped_api/src/model/comments_page.dart';
 import 'package:piped_api/src/model/exception_error.dart';
 import 'package:piped_api/src/model/regions.dart';
 import 'package:piped_api/src/model/stream.dart';
@@ -25,6 +27,8 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   ChannelInfo,
+  Comment,
+  CommentsPage,
   ExceptionError,
   Regions,
   Stream,
