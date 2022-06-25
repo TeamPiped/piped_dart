@@ -33,6 +33,7 @@ part 'video_info.g.dart';
 /// * [uploaderAvatar] - The URL of the video's uploader's avatar.
 /// * [uploaderUrl] - The relative URL of the video's uploader.
 /// * [uploaderVerified] - Whether the video's uploader is verified.
+/// * [views] - The number of views the video has.
 /// * [relatedStreams] 
 abstract class VideoInfo implements Built<VideoInfo, VideoInfoBuilder> {
     @BuiltValueField(wireName: r'audioStreams')
@@ -107,6 +108,10 @@ abstract class VideoInfo implements Built<VideoInfo, VideoInfoBuilder> {
     /// Whether the video's uploader is verified.
     @BuiltValueField(wireName: r'uploaderVerified')
     bool? get uploaderVerified;
+
+    /// The number of views the video has.
+    @BuiltValueField(wireName: r'views')
+    int? get views;
 
     @BuiltValueField(wireName: r'relatedStreams')
     BuiltList<StreamItem>? get relatedStreams;
@@ -247,6 +252,12 @@ class _$VideoInfoSerializer implements StructuredSerializer<VideoInfo> {
                 ..add(serializers.serialize(object.uploaderVerified,
                     specifiedType: const FullType(bool)));
         }
+        if (object.views != null) {
+            result
+                ..add(r'views')
+                ..add(serializers.serialize(object.views,
+                    specifiedType: const FullType(int)));
+        }
         if (object.relatedStreams != null) {
             result
                 ..add(r'relatedStreams')
@@ -362,6 +373,11 @@ class _$VideoInfoSerializer implements StructuredSerializer<VideoInfo> {
                     final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(bool)) as bool;
                     result.uploaderVerified = valueDes;
+                    break;
+                case r'views':
+                    final valueDes = serializers.deserialize(value,
+                        specifiedType: const FullType(int)) as int;
+                    result.views = valueDes;
                     break;
                 case r'relatedStreams':
                     final valueDes = serializers.deserialize(value,

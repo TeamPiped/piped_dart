@@ -46,6 +46,8 @@ class _$VideoInfo extends VideoInfo {
   @override
   final bool? uploaderVerified;
   @override
+  final int? views;
+  @override
   final BuiltList<StreamItem>? relatedStreams;
 
   factory _$VideoInfo([void Function(VideoInfoBuilder)? updates]) =>
@@ -71,6 +73,7 @@ class _$VideoInfo extends VideoInfo {
       this.uploaderAvatar,
       this.uploaderUrl,
       this.uploaderVerified,
+      this.views,
       this.relatedStreams})
       : super._();
 
@@ -104,6 +107,7 @@ class _$VideoInfo extends VideoInfo {
         uploaderAvatar == other.uploaderAvatar &&
         uploaderUrl == other.uploaderUrl &&
         uploaderVerified == other.uploaderVerified &&
+        views == other.views &&
         relatedStreams == other.relatedStreams;
   }
 
@@ -127,25 +131,25 @@ class _$VideoInfo extends VideoInfo {
                                                                 $jc(
                                                                     $jc(
                                                                         $jc(
-                                                                            $jc($jc(0, audioStreams.hashCode),
-                                                                                videoStreams.hashCode),
-                                                                            description.hashCode),
-                                                                        dislikes.hashCode),
-                                                                    duration.hashCode),
-                                                                hls.hashCode),
-                                                            lbryId.hashCode),
-                                                        likes.hashCode),
-                                                    livestream.hashCode),
-                                                proxyUrl.hashCode),
-                                            subtitles.hashCode),
-                                        dash.hashCode),
-                                    thumbnailUrl.hashCode),
-                                title.hashCode),
-                            uploadDate.hashCode),
-                        uploader.hashCode),
-                    uploaderAvatar.hashCode),
-                uploaderUrl.hashCode),
-            uploaderVerified.hashCode),
+                                                                            $jc($jc($jc(0, audioStreams.hashCode), videoStreams.hashCode),
+                                                                                description.hashCode),
+                                                                            dislikes.hashCode),
+                                                                        duration.hashCode),
+                                                                    hls.hashCode),
+                                                                lbryId.hashCode),
+                                                            likes.hashCode),
+                                                        livestream.hashCode),
+                                                    proxyUrl.hashCode),
+                                                subtitles.hashCode),
+                                            dash.hashCode),
+                                        thumbnailUrl.hashCode),
+                                    title.hashCode),
+                                uploadDate.hashCode),
+                            uploader.hashCode),
+                        uploaderAvatar.hashCode),
+                    uploaderUrl.hashCode),
+                uploaderVerified.hashCode),
+            views.hashCode),
         relatedStreams.hashCode));
   }
 
@@ -171,6 +175,7 @@ class _$VideoInfo extends VideoInfo {
           ..add('uploaderAvatar', uploaderAvatar)
           ..add('uploaderUrl', uploaderUrl)
           ..add('uploaderVerified', uploaderVerified)
+          ..add('views', views)
           ..add('relatedStreams', relatedStreams))
         .toString();
   }
@@ -263,6 +268,10 @@ class VideoInfoBuilder implements Builder<VideoInfo, VideoInfoBuilder> {
   set uploaderVerified(bool? uploaderVerified) =>
       _$this._uploaderVerified = uploaderVerified;
 
+  int? _views;
+  int? get views => _$this._views;
+  set views(int? views) => _$this._views = views;
+
   ListBuilder<StreamItem>? _relatedStreams;
   ListBuilder<StreamItem> get relatedStreams =>
       _$this._relatedStreams ??= new ListBuilder<StreamItem>();
@@ -295,6 +304,7 @@ class VideoInfoBuilder implements Builder<VideoInfo, VideoInfoBuilder> {
       _uploaderAvatar = $v.uploaderAvatar;
       _uploaderUrl = $v.uploaderUrl;
       _uploaderVerified = $v.uploaderVerified;
+      _views = $v.views;
       _relatedStreams = $v.relatedStreams?.toBuilder();
       _$v = null;
     }
@@ -337,6 +347,7 @@ class VideoInfoBuilder implements Builder<VideoInfo, VideoInfoBuilder> {
               uploaderAvatar: uploaderAvatar,
               uploaderUrl: uploaderUrl,
               uploaderVerified: uploaderVerified,
+              views: views,
               relatedStreams: _relatedStreams?.build());
     } catch (_) {
       late String _$failedField;

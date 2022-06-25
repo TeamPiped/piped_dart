@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **uploaderAvatar** | **String** | The URL of the video's uploader's avatar. | [optional] 
 **uploaderUrl** | **String** | The relative URL of the video's uploader. | [optional] 
 **uploaderVerified** | **bool** | Whether the video's uploader is verified. | [optional] 
+**views** | **int** | The number of views the video has. | [optional] 
 **relatedStreams** | [**BuiltList&lt;StreamItem&gt;**](StreamItem.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
