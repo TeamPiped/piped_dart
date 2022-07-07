@@ -71,6 +71,8 @@ Class | Method | HTTP request | Description
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelNextPage**](doc/UnauthenticatedApi.md#channelnextpage) | **GET** /nextpage/channel/{channelId} | Gets more channel videos
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**comments**](doc/UnauthenticatedApi.md#comments) | **GET** /comments/{videoId} | Gets Comments
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**commentsNextPage**](doc/UnauthenticatedApi.md#commentsnextpage) | **GET** /nextpage/comments/{videoId} | Gets more comments
+[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**search**](doc/UnauthenticatedApi.md#search) | **GET** /search | Searches for videos, channels, and playlists.
+[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**searchNextPage**](doc/UnauthenticatedApi.md#searchnextpage) | **GET** /nextpage/search | Gets more search results
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**streamInfo**](doc/UnauthenticatedApi.md#streaminfo) | **GET** /streams/{videoId} | Gets Video Information
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**trending**](doc/UnauthenticatedApi.md#trending) | **GET** /trending | Gets all Trending Videos
 
@@ -78,10 +80,15 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [ChannelInfo](doc/ChannelInfo.md)
+ - [ChannelItem](doc/ChannelItem.md)
  - [Comment](doc/Comment.md)
  - [CommentsPage](doc/CommentsPage.md)
  - [ExceptionError](doc/ExceptionError.md)
+ - [PlaylistItem](doc/PlaylistItem.md)
  - [Regions](doc/Regions.md)
+ - [SearchFilter](doc/SearchFilter.md)
+ - [SearchItem](doc/SearchItem.md)
+ - [SearchPage](doc/SearchPage.md)
  - [Stream](doc/Stream.md)
  - [StreamItem](doc/StreamItem.md)
  - [StreamsPage](doc/StreamsPage.md)

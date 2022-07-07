@@ -13,10 +13,15 @@ import 'package:piped_api/src/date_serializer.dart';
 import 'package:piped_api/src/model/date.dart';
 
 import 'package:piped_api/src/model/channel_info.dart';
+import 'package:piped_api/src/model/channel_item.dart';
 import 'package:piped_api/src/model/comment.dart';
 import 'package:piped_api/src/model/comments_page.dart';
 import 'package:piped_api/src/model/exception_error.dart';
+import 'package:piped_api/src/model/playlist_item.dart';
 import 'package:piped_api/src/model/regions.dart';
+import 'package:piped_api/src/model/search_filter.dart';
+import 'package:piped_api/src/model/search_item.dart';
+import 'package:piped_api/src/model/search_page.dart';
 import 'package:piped_api/src/model/stream.dart';
 import 'package:piped_api/src/model/stream_item.dart';
 import 'package:piped_api/src/model/streams_page.dart';
@@ -27,10 +32,15 @@ part 'serializers.g.dart';
 
 @SerializersFor([
   ChannelInfo,
+  ChannelItem,
   Comment,
   CommentsPage,
   ExceptionError,
+  PlaylistItem,
   Regions,
+  SearchFilter,
+  SearchItem,
+  SearchPage,
   Stream,
   StreamItem,
   StreamsPage,

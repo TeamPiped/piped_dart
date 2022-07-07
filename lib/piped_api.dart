@@ -12,10 +12,15 @@ export 'package:piped_api/src/model/date.dart';
 export 'package:piped_api/src/api/unauthenticated_api.dart';
 
 export 'package:piped_api/src/model/channel_info.dart';
+export 'package:piped_api/src/model/channel_item.dart';
 export 'package:piped_api/src/model/comment.dart';
 export 'package:piped_api/src/model/comments_page.dart';
 export 'package:piped_api/src/model/exception_error.dart';
+export 'package:piped_api/src/model/playlist_item.dart';
 export 'package:piped_api/src/model/regions.dart';
+export 'package:piped_api/src/model/search_filter.dart';
+export 'package:piped_api/src/model/search_item.dart';
+export 'package:piped_api/src/model/search_page.dart';
 export 'package:piped_api/src/model/stream.dart';
 export 'package:piped_api/src/model/stream_item.dart';
 export 'package:piped_api/src/model/streams_page.dart';
