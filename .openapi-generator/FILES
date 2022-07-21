@@ -45,8 +45,3 @@ lib/src/model/subtitle.dart
 lib/src/model/video_info.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/channel_item_test.dart
-test/playlist_item_test.dart
-test/search_filter_test.dart
-test/search_item_test.dart
-test/search_page_test.dart
