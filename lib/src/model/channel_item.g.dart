@@ -23,7 +23,7 @@ class _$ChannelItem extends ChannelItem {
   final int? videos;
 
   factory _$ChannelItem([void Function(ChannelItemBuilder)? updates]) =>
-      (new ChannelItemBuilder()..update(updates)).build();
+      (new ChannelItemBuilder()..update(updates))._build();
 
   _$ChannelItem._(
       {this.description,
@@ -71,7 +71,7 @@ class _$ChannelItem extends ChannelItem {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ChannelItem')
+    return (newBuiltValueToStringHelper(r'ChannelItem')
           ..add('description', description)
           ..add('name', name)
           ..add('subscribers', subscribers)
@@ -145,7 +145,9 @@ class ChannelItemBuilder implements Builder<ChannelItem, ChannelItemBuilder> {
   }
 
   @override
-  _$ChannelItem build() {
+  ChannelItem build() => _build();
+
+  _$ChannelItem _build() {
     final _$result = _$v ??
         new _$ChannelItem._(
             description: description,
@@ -160,4 +162,4 @@ class ChannelItemBuilder implements Builder<ChannelItem, ChannelItemBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

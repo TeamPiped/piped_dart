@@ -31,7 +31,7 @@ class _$Comment extends Comment {
   final bool? verified;
 
   factory _$Comment([void Function(CommentBuilder)? updates]) =>
-      (new CommentBuilder()..update(updates)).build();
+      (new CommentBuilder()..update(updates))._build();
 
   _$Comment._(
       {this.author,
@@ -97,7 +97,7 @@ class _$Comment extends Comment {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Comment')
+    return (newBuiltValueToStringHelper(r'Comment')
           ..add('author', author)
           ..add('thumbnail', thumbnail)
           ..add('commentId', commentId)
@@ -196,7 +196,9 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
   }
 
   @override
-  _$Comment build() {
+  Comment build() => _build();
+
+  _$Comment _build() {
     final _$result = _$v ??
         new _$Comment._(
             author: author,
@@ -215,4 +217,4 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

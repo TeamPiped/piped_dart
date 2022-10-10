@@ -28,7 +28,7 @@ class _$ChannelInfo extends ChannelInfo {
   final bool verified;
 
   factory _$ChannelInfo([void Function(ChannelInfoBuilder) updates]) =>
-      (new ChannelInfoBuilder()..update(updates)).build();
+      (new ChannelInfoBuilder()..update(updates))._build();
 
   _$ChannelInfo._(
       {this.avatarUrl,
@@ -86,7 +86,7 @@ class _$ChannelInfo extends ChannelInfo {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ChannelInfo')
+    return (newBuiltValueToStringHelper(r'ChannelInfo')
           ..add('avatarUrl', avatarUrl)
           ..add('bannerUrl', bannerUrl)
           ..add('description', description)
@@ -175,7 +175,9 @@ class ChannelInfoBuilder implements Builder<ChannelInfo, ChannelInfoBuilder> {
   }
 
   @override
-  _$ChannelInfo build() {
+  ChannelInfo build() => _build();
+
+  _$ChannelInfo _build() {
     _$ChannelInfo _$result;
     try {
       _$result = _$v ??
@@ -196,7 +198,7 @@ class ChannelInfoBuilder implements Builder<ChannelInfo, ChannelInfoBuilder> {
         _relatedStreams?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'ChannelInfo', _$failedField, e.toString());
+            r'ChannelInfo', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -205,4 +207,4 @@ class ChannelInfoBuilder implements Builder<ChannelInfo, ChannelInfoBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

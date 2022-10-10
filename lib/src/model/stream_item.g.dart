@@ -31,7 +31,7 @@ class _$StreamItem extends StreamItem {
   final int? views;
 
   factory _$StreamItem([void Function(StreamItemBuilder)? updates]) =>
-      (new StreamItemBuilder()..update(updates)).build();
+      (new StreamItemBuilder()..update(updates))._build();
 
   _$StreamItem._(
       {required this.duration,
@@ -46,10 +46,11 @@ class _$StreamItem extends StreamItem {
       required this.url,
       this.views})
       : super._() {
-    BuiltValueNullFieldError.checkNotNull(duration, 'StreamItem', 'duration');
-    BuiltValueNullFieldError.checkNotNull(thumbnail, 'StreamItem', 'thumbnail');
-    BuiltValueNullFieldError.checkNotNull(title, 'StreamItem', 'title');
-    BuiltValueNullFieldError.checkNotNull(url, 'StreamItem', 'url');
+    BuiltValueNullFieldError.checkNotNull(duration, r'StreamItem', 'duration');
+    BuiltValueNullFieldError.checkNotNull(
+        thumbnail, r'StreamItem', 'thumbnail');
+    BuiltValueNullFieldError.checkNotNull(title, r'StreamItem', 'title');
+    BuiltValueNullFieldError.checkNotNull(url, r'StreamItem', 'url');
   }
 
   @override
@@ -102,7 +103,7 @@ class _$StreamItem extends StreamItem {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('StreamItem')
+    return (newBuiltValueToStringHelper(r'StreamItem')
           ..add('duration', duration)
           ..add('thumbnail', thumbnail)
           ..add('title', title)
@@ -202,27 +203,29 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
   }
 
   @override
-  _$StreamItem build() {
+  StreamItem build() => _build();
+
+  _$StreamItem _build() {
     final _$result = _$v ??
         new _$StreamItem._(
             duration: BuiltValueNullFieldError.checkNotNull(
-                duration, 'StreamItem', 'duration'),
+                duration, r'StreamItem', 'duration'),
             thumbnail: BuiltValueNullFieldError.checkNotNull(
-                thumbnail, 'StreamItem', 'thumbnail'),
+                thumbnail, r'StreamItem', 'thumbnail'),
             title: BuiltValueNullFieldError.checkNotNull(
-                title, 'StreamItem', 'title'),
+                title, r'StreamItem', 'title'),
             uploaded: uploaded,
             uploadedDate: uploadedDate,
             uploaderAvatar: uploaderAvatar,
             uploaderName: uploaderName,
             uploaderUrl: uploaderUrl,
             uploaderVerified: uploaderVerified,
-            url:
-                BuiltValueNullFieldError.checkNotNull(url, 'StreamItem', 'url'),
+            url: BuiltValueNullFieldError.checkNotNull(
+                url, r'StreamItem', 'url'),
             views: views);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas

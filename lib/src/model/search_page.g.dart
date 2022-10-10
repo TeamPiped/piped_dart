@@ -17,7 +17,7 @@ class _$SearchPage extends SearchPage {
   final String? suggestion;
 
   factory _$SearchPage([void Function(SearchPageBuilder)? updates]) =>
-      (new SearchPageBuilder()..update(updates)).build();
+      (new SearchPageBuilder()..update(updates))._build();
 
   _$SearchPage._({this.corrected, this.items, this.nextpage, this.suggestion})
       : super._();
@@ -48,7 +48,7 @@ class _$SearchPage extends SearchPage {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('SearchPage')
+    return (newBuiltValueToStringHelper(r'SearchPage')
           ..add('corrected', corrected)
           ..add('items', items)
           ..add('nextpage', nextpage)
@@ -105,7 +105,9 @@ class SearchPageBuilder implements Builder<SearchPage, SearchPageBuilder> {
   }
 
   @override
-  _$SearchPage build() {
+  SearchPage build() => _build();
+
+  _$SearchPage _build() {
     _$SearchPage _$result;
     try {
       _$result = _$v ??
@@ -121,7 +123,7 @@ class SearchPageBuilder implements Builder<SearchPage, SearchPageBuilder> {
         _items?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'SearchPage', _$failedField, e.toString());
+            r'SearchPage', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -130,4 +132,4 @@ class SearchPageBuilder implements Builder<SearchPage, SearchPageBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
