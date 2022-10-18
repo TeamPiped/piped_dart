@@ -9,7 +9,11 @@ import 'package:piped_api/src/auth/api_key_auth.dart';
 import 'package:piped_api/src/auth/basic_auth.dart';
 import 'package:piped_api/src/auth/bearer_auth.dart';
 import 'package:piped_api/src/auth/oauth.dart';
+import 'package:piped_api/src/api/channel_api.dart';
+import 'package:piped_api/src/api/feed_api.dart';
+import 'package:piped_api/src/api/search_api.dart';
 import 'package:piped_api/src/api/unauthenticated_api.dart';
+import 'package:piped_api/src/api/video_api.dart';
 
 class PipedApi {
   static const String basePath = r'https://pipedapi.kavin.rocks';
@@ -65,9 +69,33 @@ class PipedApi {
     }
   }
 
+  /// Get ChannelApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  ChannelApi getChannelApi() {
+    return ChannelApi(dio, serializers);
+  }
+
+  /// Get FeedApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  FeedApi getFeedApi() {
+    return FeedApi(dio, serializers);
+  }
+
+  /// Get SearchApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  SearchApi getSearchApi() {
+    return SearchApi(dio, serializers);
+  }
+
   /// Get UnauthenticatedApi instance, base route and serializer can be overridden by a given but be careful,
   /// by doing that all interceptors will not be executed
   UnauthenticatedApi getUnauthenticatedApi() {
     return UnauthenticatedApi(dio, serializers);
+  }
+
+  /// Get VideoApi instance, base route and serializer can be overridden by a given but be careful,
+  /// by doing that all interceptors will not be executed
+  VideoApi getVideoApi() {
+    return VideoApi(dio, serializers);
   }
 }

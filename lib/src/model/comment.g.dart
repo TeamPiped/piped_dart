@@ -24,6 +24,8 @@ class _$Comment extends Comment {
   @override
   final int? likeCount;
   @override
+  final int? replyCount;
+  @override
   final bool? hearted;
   @override
   final bool? pinned;
@@ -42,6 +44,7 @@ class _$Comment extends Comment {
       this.commentorUrl,
       this.repliesPage,
       this.likeCount,
+      this.replyCount,
       this.hearted,
       this.pinned,
       this.verified})
@@ -66,6 +69,7 @@ class _$Comment extends Comment {
         commentorUrl == other.commentorUrl &&
         repliesPage == other.repliesPage &&
         likeCount == other.likeCount &&
+        replyCount == other.replyCount &&
         hearted == other.hearted &&
         pinned == other.pinned &&
         verified == other.verified;
@@ -82,14 +86,16 @@ class _$Comment extends Comment {
                             $jc(
                                 $jc(
                                     $jc(
-                                        $jc($jc(0, author.hashCode),
-                                            thumbnail.hashCode),
-                                        commentId.hashCode),
-                                    commentText.hashCode),
-                                commentedTime.hashCode),
-                            commentorUrl.hashCode),
-                        repliesPage.hashCode),
-                    likeCount.hashCode),
+                                        $jc(
+                                            $jc($jc(0, author.hashCode),
+                                                thumbnail.hashCode),
+                                            commentId.hashCode),
+                                        commentText.hashCode),
+                                    commentedTime.hashCode),
+                                commentorUrl.hashCode),
+                            repliesPage.hashCode),
+                        likeCount.hashCode),
+                    replyCount.hashCode),
                 hearted.hashCode),
             pinned.hashCode),
         verified.hashCode));
@@ -106,6 +112,7 @@ class _$Comment extends Comment {
           ..add('commentorUrl', commentorUrl)
           ..add('repliesPage', repliesPage)
           ..add('likeCount', likeCount)
+          ..add('replyCount', replyCount)
           ..add('hearted', hearted)
           ..add('pinned', pinned)
           ..add('verified', verified))
@@ -149,6 +156,10 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
   int? get likeCount => _$this._likeCount;
   set likeCount(int? likeCount) => _$this._likeCount = likeCount;
 
+  int? _replyCount;
+  int? get replyCount => _$this._replyCount;
+  set replyCount(int? replyCount) => _$this._replyCount = replyCount;
+
   bool? _hearted;
   bool? get hearted => _$this._hearted;
   set hearted(bool? hearted) => _$this._hearted = hearted;
@@ -176,6 +187,7 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
       _commentorUrl = $v.commentorUrl;
       _repliesPage = $v.repliesPage;
       _likeCount = $v.likeCount;
+      _replyCount = $v.replyCount;
       _hearted = $v.hearted;
       _pinned = $v.pinned;
       _verified = $v.verified;
@@ -209,6 +221,7 @@ class CommentBuilder implements Builder<Comment, CommentBuilder> {
             commentorUrl: commentorUrl,
             repliesPage: repliesPage,
             likeCount: likeCount,
+            replyCount: replyCount,
             hearted: hearted,
             pinned: pinned,
             verified: verified);

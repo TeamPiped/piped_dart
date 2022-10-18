@@ -9,12 +9,13 @@ All URIs are relative to *https://pipedapi.kavin.rocks*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**channelInfoId**](UnauthenticatedApi.md#channelinfoid) | **GET** /channel/{channelId} | Gets Channel Information
-[**channelInfoName**](UnauthenticatedApi.md#channelinfoname) | **GET** /c/{name} | Gets Channel Information
-[**channelInfoUsername**](UnauthenticatedApi.md#channelinfousername) | **GET** /user/{username} | Gets Channel Information
+[**channelInfoId**](UnauthenticatedApi.md#channelinfoid) | **GET** /channel/{channelId} | Gets Channel Information from ID.
+[**channelInfoName**](UnauthenticatedApi.md#channelinfoname) | **GET** /c/{name} | Gets Channel Information from name.
+[**channelInfoUsername**](UnauthenticatedApi.md#channelinfousername) | **GET** /user/{username} | Gets Channel Information from username.
 [**channelNextPage**](UnauthenticatedApi.md#channelnextpage) | **GET** /nextpage/channel/{channelId} | Gets more channel videos
 [**comments**](UnauthenticatedApi.md#comments) | **GET** /comments/{videoId} | Gets Comments
 [**commentsNextPage**](UnauthenticatedApi.md#commentsnextpage) | **GET** /nextpage/comments/{videoId} | Gets more comments
+[**feedUnauthenticated**](UnauthenticatedApi.md#feedunauthenticated) | **GET** /feed/unauthenticated | Generate a feed while unauthenticated, from a list of channelIds.
 [**search**](UnauthenticatedApi.md#search) | **GET** /search | Searches for videos, channels, and playlists.
 [**searchNextPage**](UnauthenticatedApi.md#searchnextpage) | **GET** /nextpage/search | Gets more search results
 [**streamInfo**](UnauthenticatedApi.md#streaminfo) | **GET** /streams/{videoId} | Gets Video Information
@@ -24,7 +25,7 @@ Method | HTTP request | Description
 # **channelInfoId**
 > ChannelInfo channelInfoId(channelId)
 
-Gets Channel Information
+Gets Channel Information from ID.
 
 Gets all available Channel information about a channel. 
 
@@ -67,7 +68,7 @@ No authorization required
 # **channelInfoName**
 > ChannelInfo channelInfoName(name)
 
-Gets Channel Information
+Gets Channel Information from name.
 
 Gets all available Channel information about a channel. 
 
@@ -110,7 +111,7 @@ No authorization required
 # **channelInfoUsername**
 > ChannelInfo channelInfoUsername(username)
 
-Gets Channel Information
+Gets Channel Information from username.
 
 Gets all available Channel information about a channel. 
 
@@ -271,6 +272,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**CommentsPage**](CommentsPage.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **feedUnauthenticated**
+> BuiltList<StreamItem> feedUnauthenticated(channels)
+
+Generate a feed while unauthenticated, from a list of channelIds.
+
+Generates a user feed while unauthenticated. 
+
+### Example
+```dart
+import 'package:piped_api/api.dart';
+
+final api = PipedApi().getUnauthenticatedApi();
+final BuiltList<String> channels = ["UCs6KfncB4OV6Vug4o_bzijg","UClcE-kVhqyiHCcjYwcpfj9w"]; // BuiltList<String> | A list of channelIds to generate a feed from.
+
+try {
+    final response = api.feedUnauthenticated(channels);
+    print(response);
+} catch on DioError (e) {
+    print('Exception when calling UnauthenticatedApi->feedUnauthenticated: $e\n');
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **channels** | [**BuiltList&lt;String&gt;**](String.md)| A list of channelIds to generate a feed from. | 
+
+### Return type
+
+[**BuiltList&lt;StreamItem&gt;**](StreamItem.md)
 
 ### Authorization
 

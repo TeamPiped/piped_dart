@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **commentorUrl** | **String** | The relative URL of the author of the comment. | [optional] 
 **repliesPage** | **String** | The parameter used as the nextpage to fetch replies for this comment. | [optional] 
 **likeCount** | **int** | The number of likes the comment has. | [optional] 
+**replyCount** | **int** | The number of replies the comment has. | [optional] 
 **hearted** | **bool** | Whether the comment was hearted by the video's uploader. | [optional] 
 **pinned** | **bool** | Whether the comment was pinned by the video's uploader. | [optional] 
 **verified** | **bool** | Whether the author of the comment is verified. | [optional] 

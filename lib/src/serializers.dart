@@ -51,6 +51,10 @@ part 'serializers.g.dart';
 ])
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
+        const FullType(BuiltList, [FullType(String)]),
+        () => ListBuilder<String>(),
+      )
+      ..addBuilderFactory(
         const FullType(BuiltList, [FullType(StreamItem)]),
         () => ListBuilder<StreamItem>(),
       )

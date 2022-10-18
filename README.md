@@ -47,14 +47,14 @@ Please follow the [installation procedure](#installation--usage) and then run th
 import 'package:piped_api/piped_api.dart';
 
 
-final api = PipedApi().getUnauthenticatedApi();
+final api = PipedApi().getChannelApi();
 final String channelId = UCs6KfncB4OV6Vug4o_bzijg; // String | The channel ID of the YouTube channel you want to get information about.
 
 try {
     final response = await api.channelInfoId(channelId);
     print(response);
 } catch on DioError (e) {
-    print("Exception when calling UnauthenticatedApi->channelInfoId: $e\n");
+    print("Exception when calling ChannelApi->channelInfoId: $e\n");
 }
 
 ```
@@ -65,16 +65,27 @@ All URIs are relative to *https://pipedapi.kavin.rocks*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelInfoId**](doc/UnauthenticatedApi.md#channelinfoid) | **GET** /channel/{channelId} | Gets Channel Information
-[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelInfoName**](doc/UnauthenticatedApi.md#channelinfoname) | **GET** /c/{name} | Gets Channel Information
-[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelInfoUsername**](doc/UnauthenticatedApi.md#channelinfousername) | **GET** /user/{username} | Gets Channel Information
+[*ChannelApi*](doc/ChannelApi.md) | [**channelInfoId**](doc/ChannelApi.md#channelinfoid) | **GET** /channel/{channelId} | Gets Channel Information from ID.
+[*ChannelApi*](doc/ChannelApi.md) | [**channelInfoName**](doc/ChannelApi.md#channelinfoname) | **GET** /c/{name} | Gets Channel Information from name.
+[*ChannelApi*](doc/ChannelApi.md) | [**channelInfoUsername**](doc/ChannelApi.md#channelinfousername) | **GET** /user/{username} | Gets Channel Information from username.
+[*ChannelApi*](doc/ChannelApi.md) | [**channelNextPage**](doc/ChannelApi.md#channelnextpage) | **GET** /nextpage/channel/{channelId} | Gets more channel videos
+[*FeedApi*](doc/FeedApi.md) | [**feedUnauthenticated**](doc/FeedApi.md#feedunauthenticated) | **GET** /feed/unauthenticated | Generate a feed while unauthenticated, from a list of channelIds.
+[*SearchApi*](doc/SearchApi.md) | [**search**](doc/SearchApi.md#search) | **GET** /search | Searches for videos, channels, and playlists.
+[*SearchApi*](doc/SearchApi.md) | [**searchNextPage**](doc/SearchApi.md#searchnextpage) | **GET** /nextpage/search | Gets more search results
+[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelInfoId**](doc/UnauthenticatedApi.md#channelinfoid) | **GET** /channel/{channelId} | Gets Channel Information from ID.
+[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelInfoName**](doc/UnauthenticatedApi.md#channelinfoname) | **GET** /c/{name} | Gets Channel Information from name.
+[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelInfoUsername**](doc/UnauthenticatedApi.md#channelinfousername) | **GET** /user/{username} | Gets Channel Information from username.
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**channelNextPage**](doc/UnauthenticatedApi.md#channelnextpage) | **GET** /nextpage/channel/{channelId} | Gets more channel videos
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**comments**](doc/UnauthenticatedApi.md#comments) | **GET** /comments/{videoId} | Gets Comments
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**commentsNextPage**](doc/UnauthenticatedApi.md#commentsnextpage) | **GET** /nextpage/comments/{videoId} | Gets more comments
+[*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**feedUnauthenticated**](doc/UnauthenticatedApi.md#feedunauthenticated) | **GET** /feed/unauthenticated | Generate a feed while unauthenticated, from a list of channelIds.
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**search**](doc/UnauthenticatedApi.md#search) | **GET** /search | Searches for videos, channels, and playlists.
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**searchNextPage**](doc/UnauthenticatedApi.md#searchnextpage) | **GET** /nextpage/search | Gets more search results
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**streamInfo**](doc/UnauthenticatedApi.md#streaminfo) | **GET** /streams/{videoId} | Gets Video Information
 [*UnauthenticatedApi*](doc/UnauthenticatedApi.md) | [**trending**](doc/UnauthenticatedApi.md#trending) | **GET** /trending | Gets all Trending Videos
+[*VideoApi*](doc/VideoApi.md) | [**comments**](doc/VideoApi.md#comments) | **GET** /comments/{videoId} | Gets Comments
+[*VideoApi*](doc/VideoApi.md) | [**commentsNextPage**](doc/VideoApi.md#commentsnextpage) | **GET** /nextpage/comments/{videoId} | Gets more comments
+[*VideoApi*](doc/VideoApi.md) | [**streamInfo**](doc/VideoApi.md#streaminfo) | **GET** /streams/{videoId} | Gets Video Information
 
 
 ## Documentation For Models

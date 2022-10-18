@@ -27,7 +27,7 @@ class UnauthenticatedApi {
 
   const UnauthenticatedApi(this._dio, this._serializers);
 
-  /// Gets Channel Information
+  /// Gets Channel Information from ID.
   /// Gets all available Channel information about a channel. 
   ///
   /// Parameters:
@@ -101,7 +101,7 @@ class UnauthenticatedApi {
     );
   }
 
-  /// Gets Channel Information
+  /// Gets Channel Information from name.
   /// Gets all available Channel information about a channel. 
   ///
   /// Parameters:
@@ -175,7 +175,7 @@ class UnauthenticatedApi {
     );
   }
 
-  /// Gets Channel Information
+  /// Gets Channel Information from username.
   /// Gets all available Channel information about a channel. 
   ///
   /// Parameters:
@@ -474,6 +474,85 @@ class UnauthenticatedApi {
     }
 
     return Response<CommentsPage>(
+      data: _responseData,
+      headers: _response.headers,
+      isRedirect: _response.isRedirect,
+      requestOptions: _response.requestOptions,
+      redirects: _response.redirects,
+      statusCode: _response.statusCode,
+      statusMessage: _response.statusMessage,
+      extra: _response.extra,
+    );
+  }
+
+  /// Generate a feed while unauthenticated, from a list of channelIds.
+  /// Generates a user feed while unauthenticated. 
+  ///
+  /// Parameters:
+  /// * [channels] - A list of channelIds to generate a feed from.
+  /// * [cancelToken] - A [CancelToken] that can be used to cancel the operation
+  /// * [headers] - Can be used to add additional headers to the request
+  /// * [extras] - Can be used to add flags to the request
+  /// * [validateStatus] - A [ValidateStatus] callback that can be used to determine request success based on the HTTP status of the response
+  /// * [onSendProgress] - A [ProgressCallback] that can be used to get the send progress
+  /// * [onReceiveProgress] - A [ProgressCallback] that can be used to get the receive progress
+  ///
+  /// Returns a [Future] containing a [Response] with a [BuiltList<StreamItem>] as data
+  /// Throws [DioError] if API call or serialization fails
+  Future<Response<BuiltList<StreamItem>>> feedUnauthenticated({ 
+    required BuiltList<String> channels,
+    CancelToken? cancelToken,
+    Map<String, dynamic>? headers,
+    Map<String, dynamic>? extra,
+    ValidateStatus? validateStatus,
+    ProgressCallback? onSendProgress,
+    ProgressCallback? onReceiveProgress,
+  }) async {
+    final _path = r'/feed/unauthenticated';
+    final _options = Options(
+      method: r'GET',
+      headers: <String, dynamic>{
+        ...?headers,
+      },
+      extra: <String, dynamic>{
+        'secure': <Map<String, String>>[],
+        ...?extra,
+      },
+      validateStatus: validateStatus,
+    );
+
+    final _queryParameters = <String, dynamic>{
+      r'channels': encodeCollectionQueryParameter<String>(_serializers, channels, const FullType(BuiltList, [FullType(String)]), format: ListFormat.csv,),
+    };
+
+    final _response = await _dio.request<Object>(
+      _path,
+      options: _options,
+      queryParameters: _queryParameters,
+      cancelToken: cancelToken,
+      onSendProgress: onSendProgress,
+      onReceiveProgress: onReceiveProgress,
+    );
+
+    BuiltList<StreamItem> _responseData;
+
+    try {
+      const _responseType = FullType(BuiltList, [FullType(StreamItem)]);
+      _responseData = _serializers.deserialize(
+        _response.data!,
+        specifiedType: _responseType,
+      ) as BuiltList<StreamItem>;
+
+    } catch (error, stackTrace) {
+      throw DioError(
+        requestOptions: _response.requestOptions,
+        response: _response,
+        type: DioErrorType.other,
+        error: error,
+      )..stackTrace = stackTrace;
+    }
+
+    return Response<BuiltList<StreamItem>>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,

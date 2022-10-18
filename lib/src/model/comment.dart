@@ -19,6 +19,7 @@ part 'comment.g.dart';
 /// * [commentorUrl] - The relative URL of the author of the comment.
 /// * [repliesPage] - The parameter used as the nextpage to fetch replies for this comment.
 /// * [likeCount] - The number of likes the comment has.
+/// * [replyCount] - The number of replies the comment has.
 /// * [hearted] - Whether the comment was hearted by the video's uploader.
 /// * [pinned] - Whether the comment was pinned by the video's uploader.
 /// * [verified] - Whether the author of the comment is verified.
@@ -55,6 +56,10 @@ abstract class Comment implements Built<Comment, CommentBuilder> {
   /// The number of likes the comment has.
   @BuiltValueField(wireName: r'likeCount')
   int? get likeCount;
+
+  /// The number of replies the comment has.
+  @BuiltValueField(wireName: r'replyCount')
+  int? get replyCount;
 
   /// Whether the comment was hearted by the video's uploader.
   @BuiltValueField(wireName: r'hearted')
@@ -144,6 +149,13 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
       yield r'likeCount';
       yield serializers.serialize(
         object.likeCount,
+        specifiedType: const FullType(int),
+      );
+    }
+    if (object.replyCount != null) {
+      yield r'replyCount';
+      yield serializers.serialize(
+        object.replyCount,
         specifiedType: const FullType(int),
       );
     }
@@ -246,6 +258,13 @@ class _$CommentSerializer implements PrimitiveSerializer<Comment> {
             specifiedType: const FullType(int),
           ) as int;
           result.likeCount = valueDes;
+          break;
+        case r'replyCount':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int;
+          result.replyCount = valueDes;
           break;
         case r'hearted':
           final valueDes = serializers.deserialize(
