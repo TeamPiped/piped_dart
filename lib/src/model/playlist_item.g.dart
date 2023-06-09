@@ -8,6 +8,8 @@ part of 'playlist_item.dart';
 
 class _$PlaylistItem extends PlaylistItem {
   @override
+  final String? type;
+  @override
   final String? name;
   @override
   final String? thumbnail;
@@ -19,7 +21,8 @@ class _$PlaylistItem extends PlaylistItem {
   factory _$PlaylistItem([void Function(PlaylistItemBuilder)? updates]) =>
       (new PlaylistItemBuilder()..update(updates))._build();
 
-  _$PlaylistItem._({this.name, this.thumbnail, this.url, this.videos})
+  _$PlaylistItem._(
+      {this.type, this.name, this.thumbnail, this.url, this.videos})
       : super._();
 
   @override
@@ -33,6 +36,7 @@ class _$PlaylistItem extends PlaylistItem {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is PlaylistItem &&
+        type == other.type &&
         name == other.name &&
         thumbnail == other.thumbnail &&
         url == other.url &&
@@ -41,14 +45,20 @@ class _$PlaylistItem extends PlaylistItem {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc($jc($jc(0, name.hashCode), thumbnail.hashCode), url.hashCode),
-        videos.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, thumbnail.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, videos.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'PlaylistItem')
+          ..add('type', type)
           ..add('name', name)
           ..add('thumbnail', thumbnail)
           ..add('url', url)
@@ -60,6 +70,10 @@ class _$PlaylistItem extends PlaylistItem {
 class PlaylistItemBuilder
     implements Builder<PlaylistItem, PlaylistItemBuilder> {
   _$PlaylistItem? _$v;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
   String? _name;
   String? get name => _$this._name;
@@ -84,6 +98,7 @@ class PlaylistItemBuilder
   PlaylistItemBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _type = $v.type;
       _name = $v.name;
       _thumbnail = $v.thumbnail;
       _url = $v.url;
@@ -110,10 +125,14 @@ class PlaylistItemBuilder
   _$PlaylistItem _build() {
     final _$result = _$v ??
         new _$PlaylistItem._(
-            name: name, thumbnail: thumbnail, url: url, videos: videos);
+            type: type,
+            name: name,
+            thumbnail: thumbnail,
+            url: url,
+            videos: videos);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

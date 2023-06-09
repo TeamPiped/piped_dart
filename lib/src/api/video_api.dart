@@ -64,22 +64,23 @@ class VideoApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CommentsPage _responseData;
+    CommentsPage? _responseData;
 
     try {
-      const _responseType = FullType(CommentsPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CommentsPage),
       ) as CommentsPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<CommentsPage>(
@@ -145,22 +146,23 @@ class VideoApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CommentsPage _responseData;
+    CommentsPage? _responseData;
 
     try {
-      const _responseType = FullType(CommentsPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CommentsPage),
       ) as CommentsPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<CommentsPage>(
@@ -219,22 +221,23 @@ class VideoApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    VideoInfo _responseData;
+    VideoInfo? _responseData;
 
     try {
-      const _responseType = FullType(VideoInfo);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(VideoInfo),
       ) as VideoInfo;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<VideoInfo>(

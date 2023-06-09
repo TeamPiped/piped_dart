@@ -11,6 +11,7 @@ part 'channel_item.g.dart';
 /// ChannelItem
 ///
 /// Properties:
+/// * [type] - The type of the channel item. Always channel.
 /// * [description] - The description of the channel.
 /// * [name] - The name of the channel.
 /// * [subscribers] - The number of subscribers the channel has.
@@ -20,6 +21,10 @@ part 'channel_item.g.dart';
 /// * [videos] - The number of videos the channel has.
 @BuiltValue()
 abstract class ChannelItem implements Built<ChannelItem, ChannelItemBuilder> {
+  /// The type of the channel item. Always channel.
+  @BuiltValueField(wireName: r'type')
+  String? get type;
+
   /// The description of the channel.
   @BuiltValueField(wireName: r'description')
   String? get description;
@@ -71,6 +76,13 @@ class _$ChannelItemSerializer implements PrimitiveSerializer<ChannelItem> {
     ChannelItem object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.type != null) {
+      yield r'type';
+      yield serializers.serialize(
+        object.type,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.description != null) {
       yield r'description';
       yield serializers.serialize(
@@ -143,6 +155,13 @@ class _$ChannelItemSerializer implements PrimitiveSerializer<ChannelItem> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.type = valueDes;
+          break;
         case r'description':
           final valueDes = serializers.deserialize(
             value,

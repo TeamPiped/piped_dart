@@ -8,6 +8,7 @@ import 'package:piped_api/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of the channel item. Always channel. | [optional] 
 **description** | **String** | The description of the channel. | [optional] 
 **name** | **String** | The name of the channel. | [optional] 
 **subscribers** | **int** | The number of subscribers the channel has. | [optional] 

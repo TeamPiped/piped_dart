@@ -8,6 +8,8 @@ part of 'stream_item.dart';
 
 class _$StreamItem extends StreamItem {
   @override
+  final String? type;
+  @override
   final int duration;
   @override
   final String thumbnail;
@@ -29,12 +31,17 @@ class _$StreamItem extends StreamItem {
   final String url;
   @override
   final int? views;
+  @override
+  final bool? isShort;
+  @override
+  final String? shortDescription;
 
   factory _$StreamItem([void Function(StreamItemBuilder)? updates]) =>
       (new StreamItemBuilder()..update(updates))._build();
 
   _$StreamItem._(
-      {required this.duration,
+      {this.type,
+      required this.duration,
       required this.thumbnail,
       required this.title,
       this.uploaded,
@@ -44,7 +51,9 @@ class _$StreamItem extends StreamItem {
       this.uploaderUrl,
       this.uploaderVerified,
       required this.url,
-      this.views})
+      this.views,
+      this.isShort,
+      this.shortDescription})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(duration, r'StreamItem', 'duration');
     BuiltValueNullFieldError.checkNotNull(
@@ -64,6 +73,7 @@ class _$StreamItem extends StreamItem {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is StreamItem &&
+        type == other.type &&
         duration == other.duration &&
         thumbnail == other.thumbnail &&
         title == other.title &&
@@ -74,36 +84,36 @@ class _$StreamItem extends StreamItem {
         uploaderUrl == other.uploaderUrl &&
         uploaderVerified == other.uploaderVerified &&
         url == other.url &&
-        views == other.views;
+        views == other.views &&
+        isShort == other.isShort &&
+        shortDescription == other.shortDescription;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc($jc(0, duration.hashCode),
-                                            thumbnail.hashCode),
-                                        title.hashCode),
-                                    uploaded.hashCode),
-                                uploadedDate.hashCode),
-                            uploaderAvatar.hashCode),
-                        uploaderName.hashCode),
-                    uploaderUrl.hashCode),
-                uploaderVerified.hashCode),
-            url.hashCode),
-        views.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, duration.hashCode);
+    _$hash = $jc(_$hash, thumbnail.hashCode);
+    _$hash = $jc(_$hash, title.hashCode);
+    _$hash = $jc(_$hash, uploaded.hashCode);
+    _$hash = $jc(_$hash, uploadedDate.hashCode);
+    _$hash = $jc(_$hash, uploaderAvatar.hashCode);
+    _$hash = $jc(_$hash, uploaderName.hashCode);
+    _$hash = $jc(_$hash, uploaderUrl.hashCode);
+    _$hash = $jc(_$hash, uploaderVerified.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, views.hashCode);
+    _$hash = $jc(_$hash, isShort.hashCode);
+    _$hash = $jc(_$hash, shortDescription.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'StreamItem')
+          ..add('type', type)
           ..add('duration', duration)
           ..add('thumbnail', thumbnail)
           ..add('title', title)
@@ -114,13 +124,19 @@ class _$StreamItem extends StreamItem {
           ..add('uploaderUrl', uploaderUrl)
           ..add('uploaderVerified', uploaderVerified)
           ..add('url', url)
-          ..add('views', views))
+          ..add('views', views)
+          ..add('isShort', isShort)
+          ..add('shortDescription', shortDescription))
         .toString();
   }
 }
 
 class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
   _$StreamItem? _$v;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
   int? _duration;
   int? get duration => _$this._duration;
@@ -168,6 +184,15 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
   int? get views => _$this._views;
   set views(int? views) => _$this._views = views;
 
+  bool? _isShort;
+  bool? get isShort => _$this._isShort;
+  set isShort(bool? isShort) => _$this._isShort = isShort;
+
+  String? _shortDescription;
+  String? get shortDescription => _$this._shortDescription;
+  set shortDescription(String? shortDescription) =>
+      _$this._shortDescription = shortDescription;
+
   StreamItemBuilder() {
     StreamItem._defaults(this);
   }
@@ -175,6 +200,7 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
   StreamItemBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _type = $v.type;
       _duration = $v.duration;
       _thumbnail = $v.thumbnail;
       _title = $v.title;
@@ -186,6 +212,8 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
       _uploaderVerified = $v.uploaderVerified;
       _url = $v.url;
       _views = $v.views;
+      _isShort = $v.isShort;
+      _shortDescription = $v.shortDescription;
       _$v = null;
     }
     return this;
@@ -208,6 +236,7 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
   _$StreamItem _build() {
     final _$result = _$v ??
         new _$StreamItem._(
+            type: type,
             duration: BuiltValueNullFieldError.checkNotNull(
                 duration, r'StreamItem', 'duration'),
             thumbnail: BuiltValueNullFieldError.checkNotNull(
@@ -222,10 +251,12 @@ class StreamItemBuilder implements Builder<StreamItem, StreamItemBuilder> {
             uploaderVerified: uploaderVerified,
             url: BuiltValueNullFieldError.checkNotNull(
                 url, r'StreamItem', 'url'),
-            views: views);
+            views: views,
+            isShort: isShort,
+            shortDescription: shortDescription);
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

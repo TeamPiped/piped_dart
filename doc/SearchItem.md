@@ -8,6 +8,7 @@ import 'package:piped_api/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** | The type of the playlist item. Always playlist. | [optional] 
 **duration** | **int** | The duration of the video in seconds. | 
 **thumbnail** | **String** | The thumbnail of the playlist. | 
 **title** | **String** | The title of the video. | 
@@ -19,6 +20,8 @@ Name | Type | Description | Notes
 **uploaderVerified** | **bool** | Whether or not the channel has a verified badge. | [optional] 
 **url** | **String** | The relative URL of the playlist. | 
 **views** | **int** | The number of views the video has. | [optional] 
+**isShort** | **bool** | Whether or not the video is a short video. | [optional] 
+**shortDescription** | **String** | The short description of the video. | [optional] 
 **description** | **String** | The description of the channel. | [optional] 
 **name** | **String** | The name of the playlist. | [optional] 
 **subscribers** | **int** | The number of subscribers the channel has. | [optional] 

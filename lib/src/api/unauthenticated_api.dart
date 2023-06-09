@@ -71,22 +71,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ChannelInfo _responseData;
+    ChannelInfo? _responseData;
 
     try {
-      const _responseType = FullType(ChannelInfo);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ChannelInfo),
       ) as ChannelInfo;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ChannelInfo>(
@@ -145,22 +146,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ChannelInfo _responseData;
+    ChannelInfo? _responseData;
 
     try {
-      const _responseType = FullType(ChannelInfo);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ChannelInfo),
       ) as ChannelInfo;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ChannelInfo>(
@@ -219,22 +221,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    ChannelInfo _responseData;
+    ChannelInfo? _responseData;
 
     try {
-      const _responseType = FullType(ChannelInfo);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(ChannelInfo),
       ) as ChannelInfo;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<ChannelInfo>(
@@ -300,22 +303,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    StreamsPage _responseData;
+    StreamsPage? _responseData;
 
     try {
-      const _responseType = FullType(StreamsPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(StreamsPage),
       ) as StreamsPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<StreamsPage>(
@@ -374,22 +378,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CommentsPage _responseData;
+    CommentsPage? _responseData;
 
     try {
-      const _responseType = FullType(CommentsPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CommentsPage),
       ) as CommentsPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<CommentsPage>(
@@ -455,22 +460,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    CommentsPage _responseData;
+    CommentsPage? _responseData;
 
     try {
-      const _responseType = FullType(CommentsPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(CommentsPage),
       ) as CommentsPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<CommentsPage>(
@@ -534,22 +540,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<StreamItem> _responseData;
+    BuiltList<StreamItem>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(StreamItem)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(StreamItem)]),
       ) as BuiltList<StreamItem>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<StreamItem>>(
@@ -616,22 +623,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SearchPage _responseData;
+    SearchPage? _responseData;
 
     try {
-      const _responseType = FullType(SearchPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SearchPage),
       ) as SearchPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<SearchPage>(
@@ -701,22 +709,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SearchPage _responseData;
+    SearchPage? _responseData;
 
     try {
-      const _responseType = FullType(SearchPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SearchPage),
       ) as SearchPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<SearchPage>(
@@ -775,22 +784,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    VideoInfo _responseData;
+    VideoInfo? _responseData;
 
     try {
-      const _responseType = FullType(VideoInfo);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(VideoInfo),
       ) as VideoInfo;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<VideoInfo>(
@@ -854,22 +864,23 @@ class UnauthenticatedApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    BuiltList<StreamItem> _responseData;
+    BuiltList<StreamItem>? _responseData;
 
     try {
-      const _responseType = FullType(BuiltList, [FullType(StreamItem)]);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(BuiltList, [FullType(StreamItem)]),
       ) as BuiltList<StreamItem>;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<BuiltList<StreamItem>>(

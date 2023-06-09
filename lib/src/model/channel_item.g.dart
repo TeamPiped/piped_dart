@@ -8,6 +8,8 @@ part of 'channel_item.dart';
 
 class _$ChannelItem extends ChannelItem {
   @override
+  final String? type;
+  @override
   final String? description;
   @override
   final String? name;
@@ -26,7 +28,8 @@ class _$ChannelItem extends ChannelItem {
       (new ChannelItemBuilder()..update(updates))._build();
 
   _$ChannelItem._(
-      {this.description,
+      {this.type,
+      this.description,
       this.name,
       this.subscribers,
       this.thumbnail,
@@ -46,6 +49,7 @@ class _$ChannelItem extends ChannelItem {
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     return other is ChannelItem &&
+        type == other.type &&
         description == other.description &&
         name == other.name &&
         subscribers == other.subscribers &&
@@ -57,21 +61,23 @@ class _$ChannelItem extends ChannelItem {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc($jc($jc(0, description.hashCode), name.hashCode),
-                        subscribers.hashCode),
-                    thumbnail.hashCode),
-                url.hashCode),
-            verified.hashCode),
-        videos.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, type.hashCode);
+    _$hash = $jc(_$hash, description.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jc(_$hash, subscribers.hashCode);
+    _$hash = $jc(_$hash, thumbnail.hashCode);
+    _$hash = $jc(_$hash, url.hashCode);
+    _$hash = $jc(_$hash, verified.hashCode);
+    _$hash = $jc(_$hash, videos.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper(r'ChannelItem')
+          ..add('type', type)
           ..add('description', description)
           ..add('name', name)
           ..add('subscribers', subscribers)
@@ -85,6 +91,10 @@ class _$ChannelItem extends ChannelItem {
 
 class ChannelItemBuilder implements Builder<ChannelItem, ChannelItemBuilder> {
   _$ChannelItem? _$v;
+
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
   String? _description;
   String? get description => _$this._description;
@@ -121,6 +131,7 @@ class ChannelItemBuilder implements Builder<ChannelItem, ChannelItemBuilder> {
   ChannelItemBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
+      _type = $v.type;
       _description = $v.description;
       _name = $v.name;
       _subscribers = $v.subscribers;
@@ -150,6 +161,7 @@ class ChannelItemBuilder implements Builder<ChannelItem, ChannelItemBuilder> {
   _$ChannelItem _build() {
     final _$result = _$v ??
         new _$ChannelItem._(
+            type: type,
             description: description,
             name: name,
             subscribers: subscribers,
@@ -162,4 +174,4 @@ class ChannelItemBuilder implements Builder<ChannelItem, ChannelItemBuilder> {
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,no_leading_underscores_for_local_identifiers,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new,unnecessary_lambdas
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

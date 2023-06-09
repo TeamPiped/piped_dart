@@ -11,12 +11,17 @@ part 'playlist_item.g.dart';
 /// PlaylistItem
 ///
 /// Properties:
+/// * [type] - The type of the playlist item. Always playlist.
 /// * [name] - The name of the playlist.
 /// * [thumbnail] - The thumbnail of the playlist.
 /// * [url] - The relative URL of the playlist.
 /// * [videos] - The number of videos in the playlist.
 @BuiltValue()
 abstract class PlaylistItem implements Built<PlaylistItem, PlaylistItemBuilder> {
+  /// The type of the playlist item. Always playlist.
+  @BuiltValueField(wireName: r'type')
+  String? get type;
+
   /// The name of the playlist.
   @BuiltValueField(wireName: r'name')
   String? get name;
@@ -56,6 +61,13 @@ class _$PlaylistItemSerializer implements PrimitiveSerializer<PlaylistItem> {
     PlaylistItem object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.type != null) {
+      yield r'type';
+      yield serializers.serialize(
+        object.type,
+        specifiedType: const FullType(String),
+      );
+    }
     if (object.name != null) {
       yield r'name';
       yield serializers.serialize(
@@ -107,6 +119,13 @@ class _$PlaylistItemSerializer implements PrimitiveSerializer<PlaylistItem> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.type = valueDes;
+          break;
         case r'name':
           final valueDes = serializers.deserialize(
             value,

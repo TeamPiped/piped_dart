@@ -53,7 +53,3 @@ lib/src/model/subtitle.dart
 lib/src/model/video_info.dart
 lib/src/serializers.dart
 pubspec.yaml
-test/channel_api_test.dart
-test/feed_api_test.dart
-test/search_api_test.dart
-test/video_api_test.dart

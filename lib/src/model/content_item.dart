@@ -4,18 +4,19 @@
 
 // ignore_for_file: unused_element
 import 'package:piped_api/src/model/stream_item.dart';
+import 'package:built_collection/built_collection.dart';
 import 'package:piped_api/src/model/channel_item.dart';
 import 'package:piped_api/src/model/playlist_item.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:one_of/one_of.dart';
 
-part 'search_item.g.dart';
+part 'content_item.g.dart';
 
-/// SearchItem
+/// ContentItem
 ///
 /// Properties:
-/// * [type] - The type of the playlist item. Always playlist.
+/// * [type] - The type of the content item.
 /// * [duration] - The duration of the video in seconds.
 /// * [thumbnail] - The thumbnail of the playlist.
 /// * [title] - The title of the video.
@@ -35,7 +36,12 @@ part 'search_item.g.dart';
 /// * [verified] - Whether the channel is verified.
 /// * [videos] - The number of videos in the playlist.
 @BuiltValue()
-abstract class SearchItem implements Built<SearchItem, SearchItemBuilder> {
+abstract class ContentItem implements Built<ContentItem, ContentItemBuilder> {
+  /// The type of the content item.
+  @BuiltValueField(wireName: r'type')
+  ContentItemTypeEnum get type;
+  // enum typeEnum {  stream,  channel,  playlist,  };
+
   /// One Of [ChannelItem], [PlaylistItem], [StreamItem]
   OneOf get oneOf;
 
@@ -47,18 +53,18 @@ abstract class SearchItem implements Built<SearchItem, SearchItemBuilder> {
     r'stream': StreamItem,
   };
 
-  SearchItem._();
+  ContentItem._();
 
-  factory SearchItem([void updates(SearchItemBuilder b)]) = _$SearchItem;
+  factory ContentItem([void updates(ContentItemBuilder b)]) = _$ContentItem;
 
   @BuiltValueHook(initializeBuilder: true)
-  static void _defaults(SearchItemBuilder b) => b;
+  static void _defaults(ContentItemBuilder b) => b;
 
   @BuiltValueSerializer(custom: true)
-  static Serializer<SearchItem> get serializer => _$SearchItemSerializer();
+  static Serializer<ContentItem> get serializer => _$ContentItemSerializer();
 }
 
-extension SearchItemDiscriminatorExt on SearchItem {
+extension ContentItemDiscriminatorExt on ContentItem {
     String? get discriminatorValue {
         if (this is ChannelItem) {
             return r'channel';
@@ -72,7 +78,7 @@ extension SearchItemDiscriminatorExt on SearchItem {
         return null;
     }
 }
-extension SearchItemBuilderDiscriminatorExt on SearchItemBuilder {
+extension ContentItemBuilderDiscriminatorExt on ContentItemBuilder {
     String? get discriminatorValue {
         if (this is ChannelItemBuilder) {
             return r'channel';
@@ -87,42 +93,85 @@ extension SearchItemBuilderDiscriminatorExt on SearchItemBuilder {
     }
 }
 
-class _$SearchItemSerializer implements PrimitiveSerializer<SearchItem> {
+class _$ContentItemSerializer implements PrimitiveSerializer<ContentItem> {
   @override
-  final Iterable<Type> types = const [SearchItem, _$SearchItem];
+  final Iterable<Type> types = const [ContentItem, _$ContentItem];
 
   @override
-  final String wireName = r'SearchItem';
+  final String wireName = r'ContentItem';
 
   Iterable<Object?> _serializeProperties(
     Serializers serializers,
-    SearchItem object, {
+    ContentItem object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    yield r'type';
+    yield serializers.serialize(
+      object.type,
+      specifiedType: const FullType(ContentItemTypeEnum),
+    );
   }
 
   @override
   Object serialize(
     Serializers serializers,
-    SearchItem object, {
+    ContentItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
     final oneOf = object.oneOf;
-    return serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType))!;
+    final result = _serializeProperties(serializers, object, specifiedType: specifiedType).toList();
+    result.addAll(serializers.serialize(oneOf.value, specifiedType: FullType(oneOf.valueType)) as Iterable<Object?>);
+    return result;
+  }
+
+  void _deserializeProperties(
+    Serializers serializers,
+    Object serialized, {
+    FullType specifiedType = FullType.unspecified,
+    required List<Object?> serializedList,
+    required ContentItemBuilder result,
+    required List<Object?> unhandled,
+  }) {
+    for (var i = 0; i < serializedList.length; i += 2) {
+      final key = serializedList[i] as String;
+      final value = serializedList[i + 1];
+      switch (key) {
+        case r'type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(ContentItemTypeEnum),
+          ) as ContentItemTypeEnum;
+          result.type = valueDes;
+          break;
+        default:
+          unhandled.add(key);
+          unhandled.add(value);
+          break;
+      }
+    }
   }
 
   @override
-  SearchItem deserialize(
+  ContentItem deserialize(
     Serializers serializers,
     Object serialized, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final result = SearchItemBuilder();
+    final result = ContentItemBuilder();
     Object? oneOfDataSrc;
     final serializedList = (serialized as Iterable<Object?>).toList();
-    final discIndex = serializedList.indexOf(SearchItem.discriminatorFieldName) + 1;
+    final discIndex = serializedList.indexOf(ContentItem.discriminatorFieldName) + 1;
     final discValue = serializers.deserialize(serializedList[discIndex], specifiedType: FullType(String)) as String;
-    oneOfDataSrc = serialized;
+    final unhandled = <Object?>[];
+    _deserializeProperties(
+      serializers,
+      serialized,
+      specifiedType: specifiedType,
+      serializedList: serializedList,
+      unhandled: unhandled,
+      result: result
+    );
+    oneOfDataSrc = unhandled;
     final oneOfTypes = [ChannelItem, PlaylistItem, StreamItem, ];
     Object oneOfResult;
     Type oneOfType;
@@ -154,5 +203,25 @@ class _$SearchItemSerializer implements PrimitiveSerializer<SearchItem> {
     result.oneOf = OneOfDynamic(typeIndex: oneOfTypes.indexOf(oneOfType), types: oneOfTypes, value: oneOfResult);
     return result.build();
   }
+}
+
+class ContentItemTypeEnum extends EnumClass {
+
+  /// The type of the content item.
+  @BuiltValueEnumConst(wireName: r'stream')
+  static const ContentItemTypeEnum stream = _$contentItemTypeEnum_stream;
+  /// The type of the content item.
+  @BuiltValueEnumConst(wireName: r'channel')
+  static const ContentItemTypeEnum channel = _$contentItemTypeEnum_channel;
+  /// The type of the content item.
+  @BuiltValueEnumConst(wireName: r'playlist')
+  static const ContentItemTypeEnum playlist = _$contentItemTypeEnum_playlist;
+
+  static Serializer<ContentItemTypeEnum> get serializer => _$contentItemTypeEnumSerializer;
+
+  const ContentItemTypeEnum._(String name): super(name);
+
+  static BuiltSet<ContentItemTypeEnum> get values => _$contentItemTypeEnumValues;
+  static ContentItemTypeEnum valueOf(String name) => _$contentItemTypeEnumValueOf(name);
 }
 

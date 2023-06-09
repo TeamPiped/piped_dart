@@ -11,6 +11,7 @@ part 'stream_item.g.dart';
 /// StreamItem
 ///
 /// Properties:
+/// * [type] - The type of the stream item. Always stream.
 /// * [duration] - The duration of the video in seconds.
 /// * [thumbnail] - The thumbnail of the video.
 /// * [title] - The title of the video.
@@ -22,8 +23,14 @@ part 'stream_item.g.dart';
 /// * [uploaderVerified] - Whether or not the channel has a verified badge.
 /// * [url] - The relative URL to the video.
 /// * [views] - The number of views the video has.
+/// * [isShort] - Whether or not the video is a short video.
+/// * [shortDescription] - The short description of the video.
 @BuiltValue()
 abstract class StreamItem implements Built<StreamItem, StreamItemBuilder> {
+  /// The type of the stream item. Always stream.
+  @BuiltValueField(wireName: r'type')
+  String? get type;
+
   /// The duration of the video in seconds.
   @BuiltValueField(wireName: r'duration')
   int get duration;
@@ -41,6 +48,7 @@ abstract class StreamItem implements Built<StreamItem, StreamItemBuilder> {
   int? get uploaded;
 
   /// The relative date the video was uploaded on.
+  @Deprecated('uploadedDate has been deprecated')
   @BuiltValueField(wireName: r'uploadedDate')
   String? get uploadedDate;
 
@@ -68,6 +76,14 @@ abstract class StreamItem implements Built<StreamItem, StreamItemBuilder> {
   @BuiltValueField(wireName: r'views')
   int? get views;
 
+  /// Whether or not the video is a short video.
+  @BuiltValueField(wireName: r'isShort')
+  bool? get isShort;
+
+  /// The short description of the video.
+  @BuiltValueField(wireName: r'shortDescription')
+  String? get shortDescription;
+
   StreamItem._();
 
   factory StreamItem([void updates(StreamItemBuilder b)]) = _$StreamItem;
@@ -91,6 +107,13 @@ class _$StreamItemSerializer implements PrimitiveSerializer<StreamItem> {
     StreamItem object, {
     FullType specifiedType = FullType.unspecified,
   }) sync* {
+    if (object.type != null) {
+      yield r'type';
+      yield serializers.serialize(
+        object.type,
+        specifiedType: const FullType(String),
+      );
+    }
     yield r'duration';
     yield serializers.serialize(
       object.duration,
@@ -160,6 +183,20 @@ class _$StreamItemSerializer implements PrimitiveSerializer<StreamItem> {
         specifiedType: const FullType(int),
       );
     }
+    if (object.isShort != null) {
+      yield r'isShort';
+      yield serializers.serialize(
+        object.isShort,
+        specifiedType: const FullType(bool),
+      );
+    }
+    if (object.shortDescription != null) {
+      yield r'shortDescription';
+      yield serializers.serialize(
+        object.shortDescription,
+        specifiedType: const FullType.nullable(String),
+      );
+    }
   }
 
   @override
@@ -183,6 +220,13 @@ class _$StreamItemSerializer implements PrimitiveSerializer<StreamItem> {
       final key = serializedList[i] as String;
       final value = serializedList[i + 1];
       switch (key) {
+        case r'type':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String;
+          result.type = valueDes;
+          break;
         case r'duration':
           final valueDes = serializers.deserialize(
             value,
@@ -261,6 +305,21 @@ class _$StreamItemSerializer implements PrimitiveSerializer<StreamItem> {
             specifiedType: const FullType(int),
           ) as int;
           result.views = valueDes;
+          break;
+        case r'isShort':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool;
+          result.isShort = valueDes;
+          break;
+        case r'shortDescription':
+          final valueDes = serializers.deserialize(
+            value,
+            specifiedType: const FullType.nullable(String),
+          ) as String?;
+          if (valueDes == null) continue;
+          result.shortDescription = valueDes;
           break;
         default:
           unhandled.add(key);

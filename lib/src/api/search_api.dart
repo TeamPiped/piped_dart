@@ -72,22 +72,23 @@ class SearchApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SearchPage _responseData;
+    SearchPage? _responseData;
 
     try {
-      const _responseType = FullType(SearchPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SearchPage),
       ) as SearchPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<SearchPage>(
@@ -157,22 +158,23 @@ class SearchApi {
       onReceiveProgress: onReceiveProgress,
     );
 
-    SearchPage _responseData;
+    SearchPage? _responseData;
 
     try {
-      const _responseType = FullType(SearchPage);
-      _responseData = _serializers.deserialize(
-        _response.data!,
-        specifiedType: _responseType,
+      final rawResponse = _response.data;
+      _responseData = rawResponse == null ? null : _serializers.deserialize(
+        rawResponse,
+        specifiedType: const FullType(SearchPage),
       ) as SearchPage;
 
     } catch (error, stackTrace) {
       throw DioError(
         requestOptions: _response.requestOptions,
         response: _response,
-        type: DioErrorType.other,
+        type: DioErrorType.unknown,
         error: error,
-      )..stackTrace = stackTrace;
+        stackTrace: stackTrace,
+      );
     }
 
     return Response<SearchPage>(
